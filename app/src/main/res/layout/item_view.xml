@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorSecondaryDark">
+
+
+    <TextView
+        android:id="@+id/country1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Country"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorOrange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country1">
+
+        <TextView
+            android:id="@+id/txtInfect1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Infected"
+            android:textAlignment="textStart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorRed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtRecovered1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Recovered"
+            android:textAlignment="textStart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreen"
+            app:layout_constraintBottom_toTopOf="@+id/txtDeath1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtInfect1" />
+
+        <TextView
+            android:id="@+id/txtDeath1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Death"
+            android:textAlignment="textStart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/dt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorRed"
+            app:layout_constraintStart_toEndOf="@+id/txtInfect1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreen"
+            app:layout_constraintBottom_toTopOf="@+id/dt3"
+            app:layout_constraintStart_toEndOf="@+id/txtRecovered1"
+            app:layout_constraintTop_toBottomOf="@+id/dt1" />
+
+        <TextView
+            android:id="@+id/dt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text=":"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtDeath1" />
+
+        <TextView
+            android:id="@+id/infectView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorRed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dt1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/recoveredView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreen"
+            app:layout_constraintBottom_toTopOf="@+id/deathView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dt2"
+            app:layout_constraintTop_toBottomOf="@+id/infectView" />
+
+        <TextView
+            android:id="@+id/deathView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dt3" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
