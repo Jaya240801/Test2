@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.windows.worldcovid_19.Function;
 import com.example.windows.worldcovid_19.GetterSetter.CountryDataGetter;
-import com.example.windows.worldcovid_19.GetterSetter.WorldDataGetter;
 import com.example.windows.worldcovid_19.R;
 
 
@@ -19,9 +18,11 @@ import java.util.List;
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
 
     Context context;
-    List<WorldDataGetter> objects;
+    List<CountryDataGetter> objects;
 
-    public CountryAdapter(Context context, List<WorldDataGetter> objects) {
+
+
+    public CountryAdapter(Context context, List<CountryDataGetter> objects) {
         this.context = context;
         this.objects = objects;
     }
@@ -36,7 +37,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        viewHolder.t1.setText(objects.get(i).getCountryRegion());
+        viewHolder.t1.setText(objects.get(i).getCountry_region());
         viewHolder.t2.setText(Function.removeE(objects.get(i).getConfirmed()));
         viewHolder.t4.setText(Function.removeE(objects.get(i).getDeaths()));
     }

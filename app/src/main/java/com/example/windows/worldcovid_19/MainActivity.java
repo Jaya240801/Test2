@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.windows.worldcovid_19.Adapter.CountryAdapter;
 import com.example.windows.worldcovid_19.GetterSetter.CountryDataGetter;
-import com.example.windows.worldcovid_19.GetterSetter.WorldDataGetter;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tInfect, tRecovered, tDeath;
     ProgressDialog dialog;
     RecyclerView list;
-
+    List<CountryDataGetter> listData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,48 +34,50 @@ public class MainActivity extends AppCompatActivity {
 
         list = findViewById(R.id.rvCountry);
         list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(new CountryAdapter(this, listData));
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading");
         dialog.setCancelable(false);
         dialog.show();
 
+
         //getData();
-        getDataCountry();
+        //getData();
     }
 
     public void getData(){
-        Call<WorldDataGetter> call = Api.service().getData();
-        call.enqueue(new Callback<WorldDataGetter>() {
+        Call<List<CountryDataGetter>> call = Api.service().getDatas();
+        call.enqueue(new Callback<List<CountryDataGetter>>() {
             @Override
-            public void onResponse(Call<WorldDataGetter> call, Response<WorldDataGetter> response) {
-                tInfect.setText(Function.removeE(response.body().getConfirmed()));
-                tDeath.setText(Function.removeE(response.body().getDeaths()));
+            public void onResponse(Call<List<CountryDataGetter>> call, Response<List<CountryDataGetter>> response) {
+                tInfect.setText(Function.removeE(response.body().get(0).getConfirmed()));
+                tDeath.setText(Function.removeE(response.body().get(0).getDeaths()));
                 dialog.cancel();
             }
 
             @Override
-            public void onFailure(Call<WorldDataGetter> call, Throwable t) {
+            public void onFailure(Call<List<CountryDataGetter>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
     }
 
-    public void getDataCountry(){
-        Call<List<WorldDataGetter>> call = Api.service().getDatas();
-        call.enqueue(new Callback<List<WorldDataGetter>>() {
-            @Override
-            public void onResponse(Call<List<WorldDataGetter>> call, Response<List<WorldDataGetter>> response) {
-                list.setAdapter(new CountryAdapter(MainActivity.this, response.body()));
-                dialog.cancel();
-            }
-
-            @Override
-            public void onFailure(Call<List<WorldDataGetter>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-            }
-        });
-    }
+//    public void getDataCountry(){
+//        Call<List<WorldDataGetter>> call = Api.service().getDatas();
+//        call.enqueue(new Callback<List<WorldDataGetter>>() {
+//            @Override
+//            public void onResponse(Call<List<WorldDataGetter>> call, Response<List<WorldDataGetter>> response) {
+//                list.setAdapter(new CountryAdapter(MainActivity.this, response.body()));
+//                dialog.cancel();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<WorldDataGetter>> call, Throwable t) {
+//                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                dialog.cancel();
+//            }
+//        });
+//    }
 }
